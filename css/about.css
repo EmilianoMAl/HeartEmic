@@ -1,0 +1,134 @@
+
+/* =========================================
+   VARIABLES & RESET
+   ========================================= */
+   :root {
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --bg-color: OldLace;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* todos los elementos HTML en el cuerpo (atributos generales de la pagina) */
+  body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    background: var(--bg-color);
+    color: #212529;
+    padding: none;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit; /* Mantiene el color del texto original */
+  }
+  
+  a:hover {
+    text-decoration: none;
+  }
+
+  /* Estilo del título */
+  h2 {
+    font-size: 2rem;
+    margin-top: 3.5rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+
+    /* Estilo del título */
+  h3 {
+    font-size: 1.6rem;
+    color: #2c3e50;
+    text-decoration: none;
+  }
+  
+  /* Estilo del párrafo */
+  p {
+    font-size: 1.5rem;
+    color: #4d4d4d;
+    margin-top: 1rem;
+    max-width: 870px;
+    text-align: justify;
+  }
+
+  .imagen-uno{
+    max-width: 23%;
+    object-fit: contain;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: none;
+     filter: drop-shadow(0 12px 8px rgba(0,0,0,0.5));
+  }
+
+  .espacio-inicio{
+    height: 150px;
+  }
+
+    /* Ajuste para pantallas 1440p o superiores */
+  @media (min-width: 2560px) {
+      .content-container {
+          backdrop-filter: blur(60px); /* Más difuminado en 4K */
+      }
+  }
+
+@media (orientation: portrait) {
+
+  .espacio-inicio{
+    height: 110px;
+  }
+
+  .imagen-uno{
+    max-width: 65%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .logo {
+    max-width: 60px;
+    margin-left: auto;
+    margin-left: 1.9rem;
+  }
+
+  .button {
+    font-size: 1.1rem;
+    margin-top: 50px;
+    margin-right: 1.4rem;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-left: 12px;
+    margin-right: 12px;
+    max-width: 80%;
+  }
+
+  .linea-horizontal {
+    width: 80%;
+    margin-top: 2rem;
+    margin-bottom: none;
+  }
+
+  /* Sin hover animations en movil (buggean) */
+  *:hover {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+
+}

@@ -1,0 +1,220 @@
+/* =========================================
+   VARIABLES & RESET
+   ========================================= */
+   :root {
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --bg-color: OldLace;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* todos los elementos HTML en el cuerpo (atributos generales de la pagina) */
+  body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    background: var(--bg-color);
+    color: #212529;
+    padding: none;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit; /* Mantiene el color del texto original */
+  }
+  
+  a:hover {
+    text-decoration: none;
+  }
+
+  /* Estilo del título */
+  h2 {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    color: #2c3e50;
+    text-decoration: none;
+  }
+  
+  /* Estilo del párrafo */
+  p {
+    font-size: 1.5rem;
+    color: #4d4d4d;
+    margin-top: 1rem;
+    max-width: 870px;
+    text-align: justify;
+  }
+
+  .espacio-inicio{
+    height: 200px;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
+    gap: 30px;
+    width: 90%; /* Slightly wider than the original 60% for better spacing */
+    margin: 0 auto; /* Center horizontally, add top margin */
+  }
+
+  .content-container {
+    background-color: rgb(245, 233, 215);
+    border-radius: 20px;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
+    padding: 20px;
+    padding-bottom: 35px;
+    height: auto;
+    min-height: 300px;
+    max-height: 550px;
+    display: flex; /* Convierte el div en un contenedor flexible */
+    flex-direction: column;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+    margin: 0;
+  }
+
+  .linea-horizontal {
+    height: 1px;           /* Grosor de la línea */
+    width: 75%;
+    border: none;          /* Elimina el borde por defecto (si lo hay) */
+    margin: none;
+    background-color: rgb(201, 189, 175);
+  }
+
+  .grid-grid{
+    display: flex; /* Convierte el div en un contenedor flexible */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+    margin-top: 40px;
+  }
+
+  .content-container:hover {
+    transform:scale(1.01); /*Zoom*/
+    filter: drop-shadow(0 -4px 18px rgba(0,0,0,0.6));/* x y blur color */ 
+    background-color: oldlace;
+  }
+
+  .imagen-contenido {
+    height: 88%;
+    width: 90%;
+    object-fit: contain;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    filter: drop-shadow(0px 8px 10px rgba(0, 0, 0, 0.5));
+  }
+
+  .quote-container{
+    width: 75%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    text-align: center;
+  }
+
+  .quote{
+    font-family: 'Lora', serif; /* Usa la fuente 'Lora'. Si no carga, usa una fuente serif genérica. */
+    font-size: 2rem;          /* Un tamaño más grande que el texto normal. */
+    font-style: italic;         /* Cursiva para darle un estilo de cita. */
+    color: #333333;           /* Un color de texto oscuro pero no negro puro. */
+    line-height: 1.4;
+  }
+
+  .contenedor-imagen {
+    border-radius: 20px;
+    width: 90%;
+    margin-top: 15px;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.2));
+    overflow: hidden; /* Recorta el exceso si es necesario */
+    object-fit: contain;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+@media (orientation: portrait) {
+
+ body {
+  padding-left: 3%;
+  padding-right: 3%;
+ }
+
+ .espacio-inicio{
+  height: 150px;
+ }
+
+ .button {
+  font-size: 1.1rem;
+  margin-top: 50px;
+  margin-right: 1.4rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  padding-left: 10px;
+  padding-right: 10px;
+ }
+
+ h2 {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+ }
+
+ p {
+  font-size: 1.2rem;
+  margin-left: 12px;
+  margin-right: 12px;
+  max-width: 80%; 
+}
+
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr); /* one column */
+    width: 95%; /* Aumentado de 90% para que sea 'más grueso' */
+  }
+
+  .content-container {
+    height: auto;
+  }
+
+  .contenedor-imagen {
+    max-height: 280px;
+    filter: none;
+    padding-bottom: 3.5rem;
+    padding-top: 3.5rem;
+  }
+
+  .imagen-contenido {
+    margin-left: 12px;
+  }
+
+  .quote{
+    font-size: 1.5rem;
+  }
+
+  /* Sin hover animations en movil (buggean) */
+  *:hover {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+
+}

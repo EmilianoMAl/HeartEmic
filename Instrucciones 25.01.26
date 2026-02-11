@@ -1,0 +1,99 @@
+*Próximos pasos*
+
+Como ya sabes, ahora estamos trabajando con dos repositorios:
+	1.	meditador-panel
+        Contiene un ejemplo sencillo pero funcional de un compilador para ESP32.
+	2.	heartenic-website
+        Contiene la página web de Heartenic y el prototipo de frontend para el panel de personalización.
+
+Tu misión ahora es unir ambos mundos:
+hacer que la página web de Heartenic incluya un prototipo funcional de compilador/flasher para el Meditador.
+
+---
+
+*Restricciones importantes*
+
+	•	Vas a trabajar únicamente con HTML, CSS y JavaScript.
+        Esto es clave.
+	•	No vamos a usar un servidor de compilado dedicado en esta primera versión.
+        Mantener un backend que compile firmware en Python sería demasiado costoso para un MVP.
+	•	Por lo mismo, la parte de Python (compilador.py) deja de ser relevante por ahora.
+
+---
+
+*Qué sí vamos a reutilizar*
+
+En el repositorio de meditador-panel, el archivo index.html es un solo archivo que incluye:
+	•	HTML
+	•	CSS
+	•	JavaScript
+
+Dentro de ese archivo ya existe la lógica importante que nos interesa, en particular:
+	•	El uso de la librería -> ESPTool en JavaScript
+	•	La detección del ESP32 -> conectado desde el navegador
+	•	El flasheo del firmware -> desde el navegador
+
+Esa lógica de JavaScript con ESPTool es la que vas a reutilizar casi tal cual, adaptándola para que viva dentro del frontend de la website de Heartenic.
+
+---
+
+*Cambio clave en el flujo*
+
+El flujo original es algo así:
+
+	1.	El usuario conecta el ESP32 a su computadora
+	2.	El navegador lo detecta usando ESPTool
+	3.	El usuario pide un compilado
+	4.	El HTML manda la petición a compilador.py
+	5.	Python compila y regresa el binario
+	6.	El HTML flashea ese binario al ESP32
+
+👉 Ese paso de compilación en Python ya no va a existir.
+
+---
+
+*Nuevo flujo esperado*
+
+Ahora el objetivo es:
+	1.	El usuario conecta el Meditador a su computadora
+	2.	El frontend de Heartenic (HTML + JS + ESPTool) detecta el dispositivo
+	3.	El usuario selecciona una opción de personalización
+	4.	El sistema flashea un binario ya precompilado al ESP32
+
+No hay compilación dinámica.
+Solo flasheo de binarios existentes.
+
+---
+
+*Sobre los binarios*
+
+No te preocupes por el firmware real del Meditador todavía.
+Para esta etapa es suficiente con:
+	•	Dos binarios precompilados
+	•	Ambos basados en el ejemplo del blink del LED integrado
+	•	Con alguna pequeña variación entre ellos
+
+Eso nos permite validar que:
+	•	El panel funciona
+	•	El navegador detecta el dispositivo
+	•	El flasheo ocurre correctamente
+	•	La lógica de personalización tiene sentido
+
+---
+
+Es muy importante que trabajes directamente en el repositorio, pero toma en cuenta algo clave: como es el mismo repo de GitHub el que está hosteando la website, no intentes debuggear ni obtener feedback visual en la página en vivo después de cada cambio o commit. Eso sería lento e impráctico.
+Para el desarrollo local usa la extensión Live Server que te pedí instalar. Esa va a ser tu principal herramienta para iterar rápido y ver cambios al instante.
+
+También recuerda que no debes editar nada que esté expuesto públicamente. Como ya habíamos visto, la propuesta del frontend del personalizador no es accesible desde la landing pública. En la práctica, tu scope debe limitarse casi por completo a:
+	•	customizer.html
+	•	customizer.css
+	•	customizer.js
+	•	y cualquier script adicional que decidas crear para soportar esa lógica
+
+Ten muy presente que todo lo que commitees queda automáticamente en vivo en la website. Aun así, es importante que todo el trabajo se haga dentro del repo y no fuera de él.
+
+---
+
+Como ya sabes, yo me voy de viaje por dos semanas. Regreso dos días antes del Súper Bowl, y tienes hasta entonces para hacer esto con calma. Yo estaré de viaje, pero no dudes en escribirme si te atoras o tienes dudas.
+
+Sé que apenas estás empezando con HTML, CSS y JavaScript, y justo por eso no tengas miedo de apoyarte en IA, y en particular en agentes como Antigravity, que te pedí que instalaras. Para que entiendas el flujo y ganes confianza.

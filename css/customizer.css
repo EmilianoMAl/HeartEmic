@@ -1,0 +1,286 @@
+
+.customizer-wrapper {
+    margin-top: 140px; /* Espacio para la navbar fija */
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subtitulo-custom {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 0;
+}
+
+/* Grid Principal: Izquierda (Preview) y Derecha (Controles) */
+.customizer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    width: 100%;
+    align-items: start;
+}
+
+/* --- Estilos del Preview (Izquierda) --- */
+.preview-container {
+    background-color: rgb(245, 233, 215);
+    /* Hereda estilos de .content-container del index.css, forzamos algunos ajustes */
+    width: 100% !important; 
+    min-height: 500px;
+    justify-content: flex-start;
+    padding-top: 30px;
+}
+
+.pet-display {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%; /* Círculo para la mascota */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: background-color 0.5s ease;
+}
+
+.imagen-mascota-animada {
+
+    image-rendering: pixelated;       /* Para Chrome, Edge y Firefox moderno */
+    image-rendering: -moz-crisp-edges; /* Para versiones antiguas de Firefox */
+    image-rendering: crisp-edges;      /* Estándar general */
+
+    width: 140%;
+    height: 140%;
+    object-fit: contain;
+    /* Una pequeña animación de "respiración" para darle vida */
+    animation: float 4s ease-in-out infinite; 
+}
+
+/* Tabla de respiración */
+.breath-info {
+    width: 85%;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.breath-info h4 {
+    margin-bottom: 10px;
+    color: #d45476; /* Color de acento */
+    font-family: var(--font-heading);
+}
+
+.breath-table {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.breath-stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* --- Estilos de los Controles (Derecha) --- */
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.control-group h3 {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-top: 0;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+/* Botones de opción (Tarjetas seleccionables) */
+.option-card {
+    background: white;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    color: #4d4d4d;
+    font-family: var(--font-body);
+}
+
+.option-card i {
+    font-size: 2rem;
+    color: #d45476;
+    transition: all 0.3s ease;
+}
+
+.option-card span {
+    font-weight: 600;
+}
+
+/* Estado Hover */
+.option-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Estado Activo (Seleccionado) */
+.option-card.active {
+    border-color: #d45476;
+    background-color: #fff0f5; /* Un rosa muy pálido */
+}
+
+.option-card.active i {
+    transform: scale(1.1);
+}
+
+/* Botón de acción final */
+.action-btn {
+    margin-top: 20px;
+    background: #d45476;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.action-btn:hover {
+    background: #d33962;
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(212, 84, 118, 0.4);
+}
+
+/* Flashing UI Styles */
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.status-disconnected { background: #f85149; color: white; }
+.status-connected { background: #4ade80; color: #003300; }
+.status-busy { background: #fbbf24; color: #332b00; animation: pulse 1s infinite; }
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.progress-bar {
+    height: 10px;
+    background: #e0e0e0;
+    margin-top: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #238636, #4ade80);
+    width: 0%;
+    transition: width 0.2s;
+}
+
+.status-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Overriding existing option-card styles for a different theme/state */
+.option-card.active {
+    border: 2px solid #238636;
+    background-color: #f0fff4;
+}
+
+.option-card {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.option-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Disable styles */
+.control-group[style*="opacity: 0.5"] {
+    filter: grayscale(1);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 900px) or (orientation: portrait) {
+    .customizer-grid {
+        grid-template-columns: 1fr; /* Una sola columna */
+    }
+
+    .preview-container {
+        order: 1; /* Primero visualización */
+    }
+    
+    .controls-container {
+        order: 2; /* Luego controles */
+        margin-bottom: 40px;
+    }
+
+    .options-grid {
+        /* En móviles muy estrechos, quizás 3 columnas sean mucho */
+        gap: 10px;
+    }
+    
+    .option-card {
+        padding: 15px 5px;
+    }
+    
+    .option-card i {
+        font-size: 1.5rem;
+    }
+}

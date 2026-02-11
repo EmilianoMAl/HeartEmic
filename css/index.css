@@ -1,0 +1,697 @@
+/* =========================================
+   VARIABLES & RESET
+   ========================================= */
+:root {
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --bg-color: OldLace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* todos los elementos HTML en el cuerpo (atributos generales de la pagina) */
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  background: var(--bg-color);
+  color: #212529;
+  padding: none;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  /* Mantiene el color del texto original */
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.barra-superior {
+  display: flex;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: 12px;
+  padding-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(40px);
+  /* Efecto de desenfoque en el fondo */
+  position: fixed;
+  /* Fija la barra */
+  top: 0;
+  /* Pegada arriba */
+  left: 0;
+  /* Pegada a la izquierda */
+  width: 100%;
+  /* Ancho completo */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(245, 233, 215);
+  left: 0;
+  /* Pegada a la izquierda */
+  width: 100%;
+  /* Ancho completo */
+  padding-bottom: 80px;
+  justify-content: center;
+  /* Centra los elementos horizontalmente */
+  align-items: center;
+  /* Centra los elementos verticalmente */
+}
+
+
+/*Estilo imagen*/
+.logo {
+  width: 70px;
+  object-fit: contain;
+  margin-top: 0.3rem;
+  margin-left: auto;
+  margin-left: 3rem;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.03);
+  /*Zoom*/
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+  filter: saturate(1.1);
+}
+
+.linea-horizontal {
+  height: 1px;
+  /* Grosor de la línea */
+  width: 75%;
+  border: none;
+  /* Elimina el borde por defecto (si lo hay) */
+  margin: none;
+  background-color: rgb(201, 189, 175);
+}
+
+.login {
+  padding: 10px 20px;
+  background: #d45476;
+  color: white;
+  border-radius: 30px;
+  max-width: 200px;
+  height: 4%;
+  font-size: 1rem;
+  text-decoration: none;
+  margin-right: 4rem;
+  margin-top: 18px;
+  font-weight: 550;
+  margin-left: auto;
+  transition: all 0.3s ease;
+}
+
+.login:hover {
+  transform: scale(1.01);
+  /*Zoom*/
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+  background: #d33962;
+}
+
+.espacio-inicio {
+  height: 50px;
+}
+
+/* Estilo del título */
+.barra-superior h1 {
+  font-size: 3rem;
+  color: #2c3e50;
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: 5px;
+}
+
+/* Estilo del título */
+h2 {
+  font-size: 2rem;
+  margin-top: 3.5rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* Estilo del título */
+h3 {
+  font-size: 1.6rem;
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+/* Estilo del párrafo */
+p {
+  font-size: 1.5rem;
+  color: #4d4d4d;
+  margin-top: 1.5rem;
+  max-width: 870px;
+  text-align: justify;
+}
+
+.texto-contenido {
+  max-width: 550px;
+  position: relative;
+}
+
+/* Contenedor de los iconos */
+.socials-grid {
+  margin-top: 0;
+  /* Cambié 'none' por '0' que es la forma correcta */
+  margin-bottom: 60px;
+  display: flex;
+  /* Activa Flexbox */
+  gap: 10%;
+  /* Espacio entre los iconos */
+  align-items: center;
+  /* Centra verticalmente los iconos */
+  justify-content: center;
+  /* Centra el grupo de iconos horizontalmente */
+  width: 100%;
+}
+
+/* Estilo para los enlaces que contienen los iconos */
+.social-icon-link {
+  /* Quita el subrayado y el color predeterminado del enlace */
+  text-decoration: none;
+  color: inherit;
+  /* Importante para que el color del icono sea aplicable */
+  display: flex;
+  /* Asegura que el enlace se comporte como un contenedor flexible */
+  transition: all 0.3s ease;
+  /* Transición suave para transformaciones */
+}
+
+/* Estilo específico para los iconos de Font Awesome */
+.social-icon-link i {
+  color: #d45476;
+  font-size: 70px;
+  /* Tamaño del icono, equivalente al ancho anterior de la imagen */
+  /* Añade la animación de flotación */
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Definición de la animación de flotación */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+    /* Sube el icono 10px */
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Animación inversa para que bajen */
+@keyframes float-reverse {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+    /* Baja 8px */
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Aplicar animación inversa a Youtube para que se mueva opuesto a Instagram */
+.social-icon-link .fa-youtube {
+  animation-name: float-reverse;
+}
+
+/* Efecto al pasar el mouse */
+.social-icon-link i:hover {
+  color: #d33962;
+  /* Asegura el color al hacer hover si el enlace lo cambia */
+}
+
+.social-icon-link:hover {
+  transform: scale(1.1);
+  /* Agranda ligeramente el icono */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Two equal-width columns */
+  gap: 30px;
+  width: 90%;
+  /* Slightly wider than the original 60% for better spacing */
+  margin: 0 auto;
+  /* Center horizontally, add top margin */
+}
+
+.content-container {
+  background-color: rgb(245, 233, 215);
+  border-radius: 20px;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+  padding: 20px;
+  /* Padding vertical solamente, para no achicar la imagen */
+  padding-bottom: 35px;
+  height: auto;
+  min-height: 300px;
+  max-height: 550px;
+  display: flex;
+  /* Convierte el div en un contenedor flexible */
+  flex-direction: column;
+  justify-content: center;
+  /* Centra los elementos horizontalmente */
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+  margin: 0;
+}
+
+.content-container h3 {
+  padding: 0 20px;
+  /* Margen lateral solo para el texto */
+}
+
+.grid-grid {
+  display: flex;
+  /* Convierte el div en un contenedor flexible */
+  justify-content: center;
+  /* Centra los elementos horizontalmente */
+  align-items: center;
+  width: 100%;
+  gap: 5px;
+  margin-top: 40px;
+}
+
+.content-container:hover {
+  transform: scale(1.01);
+  /*Zoom*/
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+  background-color: oldlace;
+}
+
+.imagen-contenido {
+  height: 88%;
+  width: 90%;
+  object-fit: contain;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.contenedor-imagen {
+  border-radius: 20px;
+  max-height: 85%;
+  width: 90%;
+  margin-top: 15px;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+  overflow: hidden;
+  /* Recorta el exceso si es necesario */
+  object-fit: contain;
+  position: relative;
+}
+
+.icono-bajar {
+  display: none;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  /* Izquierda, Centro (ajustado al contenido), Derecha */
+  align-items: center;
+  /* Centrado vertical */
+  padding: 25px 50px;
+  /* Simplificamos el padding */
+  background-color: OldLace;
+  width: 100%;
+  position: relative;
+  /* O fixed/absolute si lo quieres pegado a la pantalla, pero relative es mejor para flujo normal */
+  z-index: 1000;
+  margin-top: 180px;
+  box-sizing: border-box;
+  /* Importante para que el padding no rompa el ancho */
+}
+
+/* Alineaciones específicas para las 3 partes */
+.footer> :nth-child(1) {
+  text-align: left;
+  /* El texto de la izquierda a la izquierda */
+}
+
+.footer> :nth-child(2) {
+  display: flex;
+  justify-content: center;
+  /* Los iconos centrados en su celda */
+}
+
+.footer> :nth-child(3) {
+  text-align: right;
+  /* El texto de la derecha a la derecha */
+}
+
+.social-icons-footer {
+  display: flex;
+  align-items: center;
+  gap: 75px;
+}
+
+.social-icon-link-footer {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon-link-footer i {
+  color: #3d3d3d;
+  font-size: 1.7rem;
+  transition: all 0.2s ease;
+}
+
+.social-icon-link-footer:hover i {
+  transform: scale(1.1);
+}
+
+/* --- HERO REDESIGN --- */
+
+.hero-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 400px;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.blur-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 1;
+  z-index: 0;
+  animation: pulse-glow 4s ease-in-out infinite alternate;
+}
+
+.shape-1 {
+  width: 450px;
+  height: 450px;
+  background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%);
+  /* Pastel Pink/Peach */
+  top: -150px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  /* Soft Yellow/Orange */
+  bottom: -150px;
+  right: -100px;
+  animation-delay: 2s;
+}
+
+.shape-3 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  /* Soft Purple/Pink */
+  top: 50%;
+  right: -150px;
+  left: auto;
+  /* Remove centering, push to side */
+  transform: translateY(-50%);
+  animation-delay: 4s;
+  opacity: 0.6;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2c3e50;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin: 0;
+  line-height: 1.1;
+  display: block;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  color: #4d4d4d;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 1.5rem;
+  max-width: 800px;
+}
+
+@keyframes pulse-glow {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.8;
+  }
+
+  33% {
+    transform: scale(1.1) translate(10px, -10px);
+    opacity: 1;
+  }
+
+  66% {
+    transform: scale(1.05) translate(-5px, 10px);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.8;
+  }
+}
+
+/* Ajuste para pantallas 1440p o superiores */
+@media (min-width: 2560px) {
+  .content-container {
+    backdrop-filter: blur(60px);
+    /* Más difuminado en 4K */
+  }
+}
+
+@media (orientation: portrait) {
+
+  .espacio-inicio {
+    height: 90px;
+  }
+
+  .icono-bajar {
+    display: block;
+  }
+
+  .barra-superior {
+    backdrop-filter: blur(30px);
+    /* Efecto de desenfoque en el fondo */
+  }
+
+  .logo {
+    max-width: 60px;
+    margin-left: auto;
+    margin-left: 1.9rem;
+  }
+
+  .hero-container {
+    padding: 20px 10px;
+    margin-top: 100px;
+    min-height: 300px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .shape-1,
+  .shape-2,
+  .shape-3 {
+    width: 250px;
+    height: 250px;
+    filter: blur(50px);
+    opacity: 1;
+    /* Make them clearer on mobile */
+  }
+
+  /* Bring them closer in on mobile so they aren't lost */
+  .shape-1 {
+    top: -50px;
+    left: -50px;
+  }
+
+  .shape-2 {
+    bottom: -50px;
+    right: -50px;
+  }
+
+  .shape-3 {
+    right: -80px;
+    /* Adjust based on need */
+  }
+
+  .social-icon-link i {
+    font-size: 50px;
+    /* Tamaño del icono, equivalente al ancho anterior de la imagen */
+  }
+
+  .barra-superior h1 {
+    font-size: 1.8rem;
+    left: 46%;
+    margin-top: 10px;
+  }
+
+  .login {
+    font-size: 0.8rem;
+    margin-top: 15px;
+    margin-right: 1.4rem;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 5rem;
+    max-width: 80%;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    margin-top: 1.5rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .texto-contenido {
+    max-width: 700px;
+  }
+
+  .linea-horizontal {
+    width: 80%;
+    margin-top: 3rem;
+    margin-bottom: none;
+  }
+
+  .socials-logo {
+    margin: none;
+    width: 52px;
+  }
+
+  .socials-grid {
+    gap: 75px;
+    /* Espacio entre los iconos (opcional) */
+  }
+
+  .logo-container {
+    width: 80px;
+    height: 80px;
+    padding: 14px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+    /* one column */
+  }
+
+  .content-container {
+    height: auto;
+  }
+
+  .contenedor-imagen {
+    max-height: 280px;
+    filter: none;
+  }
+
+  .imagen-contenido {
+    margin-left: 12px;
+  }
+
+  /* Sin hover animations en movil (buggean) */
+  *:hover {
+    animation: none;
+    transition: none;
+  }
+
+  /* --- FOOTER MÓVIL --- */
+  .footer {
+    /* Cambiamos Grid por Flex en columna para apilar elementos */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    /* Espacio entre los bloques de texto e iconos */
+    margin-top: 100px;
+    padding: 30px 20px;
+    /* Padding más cómodo para dedos */
+    text-align: center;
+    /* Todo centrado */
+    height: auto;
+    /* Dejar que crezca lo necesario */
+  }
+
+  /* Forzamos alineación central en los hijos directos */
+  .footer> :nth-child(1),
+  .footer> :nth-child(2),
+  .footer> :nth-child(3) {
+    text-align: center;
+    width: 100%;
+    /* Asegurar que ocupen el ancho para centrarse */
+    justify-content: center;
+  }
+
+  /* Arreglo de texto encimado */
+  .footer p {
+    white-space: normal;
+    /* IMPORTANTE: Permite que el texto baje de línea */
+    font-size: 0.9rem;
+    /* Texto un poco más pequeño */
+    line-height: 1.5;
+  }
+
+  /* Iconos sociales */
+  .social-icons-footer {
+    gap: 20px;
+    /* Reducimos el espacio entre iconos (75px es mucho para móvil) */
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+}

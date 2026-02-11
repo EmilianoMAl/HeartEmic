@@ -1,0 +1,135 @@
+/* =========================================
+   VARIABLES & RESET
+   ========================================= */
+   :root {
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --bg-color: OldLace;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* todos los elementos HTML en el cuerpo (atributos generales de la pagina) */
+  body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    background: var(--bg-color);
+    color: #212529;
+    padding: none;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit; /* Mantiene el color del texto original */
+  }
+  
+  a:hover {
+    text-decoration: none;
+  }
+
+  /* Estilo del título */
+  h2 {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+  
+  /* Estilo del párrafo */
+  p {
+    font-size: 1.5rem;
+    color: #4d4d4d;
+    margin-top: 1rem;
+    max-width: 870px;
+    text-align: justify;
+  }
+
+  .main{
+    display: flex;
+    flex-direction: column;
+    background: rgb(245, 233, 215);
+    padding: 3rem;
+    border-radius: 3%;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.3));
+    justify-content: center;
+  }
+
+  .luis{
+    object-fit: contain;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: none;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.5));
+    border-radius: 2%;
+  }
+
+  .main:hover{
+    transform:scale(1.03); /*Zoom*/
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.5));
+  }
+
+  .espacio-inicio{
+    height: 200px;
+  }
+
+@media (orientation: portrait) {
+
+  body {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .espacio-inicio{
+    height: 150px;
+  }
+
+  .main{
+    max-width: 80%;
+  }
+
+  .main:hover{
+    transform: none; /*Zoom*/
+  }
+
+  .button {
+    font-size: 1.1rem;
+    margin-top: 50px;
+    margin-right: 1.4rem;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-left: 12px;
+    margin-right: 12px;
+    max-width: 80%;
+  }
+
+  /* Sin hover animations en movil (buggean) */
+  *:hover {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+
+}

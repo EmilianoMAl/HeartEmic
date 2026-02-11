@@ -1,0 +1,84 @@
+/* todos los elementos HTML, 'reset' quitando estilos del navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+    /* todos los elementos HTML en el cuerpo (atributos generales de la pagina) */
+    body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        background: linear-gradient(to bottom, rgb(245, 233, 215), OldLace);
+        color: #212529;
+        padding: none;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow-x: hidden;
+      }
+
+    
+    /* Estilo del título */
+    h1 {
+        font-size: 8rem;
+        color: #2c3e50;
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Estilo del párrafo */
+    p {
+        font-size: 3rem;
+        color: #555;
+        margin-top: 0.5rem;
+        max-width: 600px;
+        font-weight: bold;
+    }
+
+    .texto-secundario{
+      font-size: 1.5rem;
+      font-weight: normal;
+      max-width: 800px;
+    }
+
+    .boton-volver{
+      display: inline-block;
+      padding: 15px;
+      margin-top: 50px;
+      background: #d94b71;
+      color: floralwhite;
+      border-radius: 30px;
+      width:15%;
+      font-size: 1.3rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+  
+    .boton-volver:hover {
+      transform:scale(1.03); /*Zoom*/
+      filter: drop-shadow(0 0 8px rgba(0,0,0,0.2));
+      background: #d33962;
+    }
+
+    @media (orientation: portrait) {
+      p{
+        font-size: 2rem;
+      }
+
+      .boton-volver
+      {
+        width: 50%;
+      }
+
+      /* Sin hover animations en movil (buggean) */
+      *:hover {
+        animation: none;
+        transition: none;
+        transform: none;
+      }
+
+    }
