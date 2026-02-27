@@ -4,49 +4,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Log In</title>
-  <link rel="stylesheet" href="css/topNfoot.css">
-  <link rel="stylesheet" href="css/soon.css">
+  <title>Iniciar Sesión - Heartenic</title>
+  <link rel="stylesheet" href="css/login-new.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="shortcut icon" href="images/logoHeartenic.png">
 </head>
 
 <body>
-  <!-- Barra fija superior -->
-  <div class="barra-superior">
-    <a href="index.html" class="logo-container">
-      <img class="logo" src="images/logoHeartenic.png" alt="Logo Heartenic">
-    </a>
-    <h1>Cuenta Heartenic</h1>
-    <div class="spacer"></div> <!-- para centrar titulo -->
-  </div>
-
-  <!-- Inicio pagina -->
-  <div class="espacio-inicio"></div>
-
-  <p><strong>Muy Pronto</strong> podras crear tu cuenta <strong>Heartenic</strong>...</p>
-
-  <img class="aura" src="images/aura.png" alt="aura naranja y rosa">
-
-  <p>Con ella, podras <strong>administrar y personalizar</strong> todas nuestras herramientas.</p>
-
-
-  <!-- Footer -->
-  <div class="footer">
-    <p style="font-size: 1.2rem; margin: 0;">© 2026 Heartenic</p>
-
-    <div class="social-icons-footer">
-      <a href="https://www.instagram.com/heartenic/" target="_blank" class="social-icon-link-footer">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.youtube.com/@Heartenic" target="_blank" class="social-icon-link-footer">
-        <i class="fab fa-youtube"></i>
-      </a>
+  <div class="container">
+    <div class="login">
+      <h1>Iniciar Sesión</h1>
+      <form action="">
+        <div class="input-box">
+          <input type="email" placeholder="Correo electrónico" required>
+          <i class="fa fa-envelope"></i>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Contraseña" required>
+          <i class="fa fa-lock"></i>
+        </div>
+        <div class="rembar">
+          <input id="rembar" type="checkbox">
+          <label for="rembar">Recordarme</label>
+        </div>
+        <button type="submit">INICIAR SESIÓN</button>
+        <div class="links">
+          <a href="#">¿Olvidaste tu contraseña?</a>
+          <a href="#">¿No tienes cuenta? Regístrate</a>
+        </div>
+      </form>
     </div>
-
-    <p style="font-size: 1.1rem; margin: 0;">
-      Tecnología consciente para el bienestar humano.
-    </p>
   </div>
 </body>
 

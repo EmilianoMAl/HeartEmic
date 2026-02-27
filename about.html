@@ -1,50 +1,120 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Heartenic</title>
-  <link rel="stylesheet" href="css/topNfoot.css">
-  <link rel="stylesheet" href="css/about.css">
+  <title>Heartenic - Quiénes Somos</title>
+  <link rel="stylesheet" href="css/about-new.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="shortcut icon" href="images/logoHeartenic.png">
 </head>
 
 <body>
-  <!-- Barra fija superior -->
+  <div class="mesh-gradient-bg"></div>
+  
   <div class="barra-superior">
-    <a href="index.html" class="logo-container">
+    <a href="index.html">
       <img class="logo" src="images/logoHeartenic.png" alt="Logo Heartenic">
     </a>
-    <h1>¿Quiénes somos?</h1>
-    <div class="spacer"></div> <!-- para centrar titulo -->
+    <h1>Heartenic</h1>
+    <a class="login" href="logInSoon.html">
+      Iniciar sesión
+    </a>
   </div>
 
-  <!-- Inicio pagina -->
-  <div class="espacio-inicio"></div>
+  <section class="parallax-hero">
+    <div class="parallax-bg parallax" data-speed="0.5"></div>
+    <img class="parallax-image parallax" data-speed="0.3" src="images/corazonCerebro.png" alt="Corazón y cerebro">
+    <div class="parallax-content">
+      <h1>¿Quiénes somos?</h1>
+      <p>Tecnología que te ayuda a volver a ti</p>
+    </div>
+  </section>
 
-  <p style="margin-bottom: 0px;"> En <strong>Heartenic</strong> creemos que la tecnología no debería alejarnos de
-    nosotros mismos, sino ayudarnos a volver.</p>
+  <section class="content-section reveal-on-scroll">
+    <h2 class="section-title">Nuestra Visión</h2>
+    <p class="section-text">
+      En <strong>Heartenic</strong> creemos que la tecnología no debería alejarnos de nosotros mismos, sino ayudarnos a volver.
+      Creamos herramientas —digitales y físicas— que nos ayuden a reconectar con nosotros mismos.
+    </p>
+    <p class="section-text">
+      Es un movimiento social y cultural que busca <strong>normalizar el autocuidado</strong>, y hacer del bienestar
+      mental algo tan cotidiano y aspiracional como hacer ejercicio o comer saludable.
+    </p>
+  </section>
 
-  <p>Creamos herramientas —digitales y físicas— que nos ayuden a reconectar con nosotros mismos.</p>
+  <section class="content-section reveal-on-scroll">
+    <h2 class="section-title">Nuestra Misión</h2>
+    <p class="section-text">
+      En un mundo saturado de distracciones, métricas y algoritmos diseñados para capturar nuestra atención, Heartenic
+      nace para cerrar la brecha entre el avance tecnológico y las necesidades humanas esenciales. Nuestra misión es
+      acompañarte en tu proceso de autoconocimiento, bienestar y crecimiento personal.
+    </p>
+    
+    <div class="values-grid">
+      <div class="value-card reveal-on-scroll">
+        <span class="value-icon">🌱</span>
+        <h3>Crecimiento Consciente</h3>
+        <p>Fomentamos el desarrollo personal a través de la tecnología mindful y herramientas de autoconocimiento.</p>
+      </div>
+      
+      <div class="value-card reveal-on-scroll">
+        <span class="value-icon">🔐</span>
+        <h3>Privacidad Total</h3>
+        <p>Tus datos biométricos y emocionales son sagrados. Todo se procesa localmente en tu dispositivo.</p>
+      </div>
+      
+      <div class="value-card reveal-on-scroll">
+        <span class="value-icon">💚</span>
+        <h3>Bienestar Accesible</h3>
+        <p>Democratizamos el acceso a herramientas de meditación y mindfulness de nivel profesional.</p>
+      </div>
+    </div>
+  </section>
 
-  <img class="imagen-uno" src="images/corazonCerebro.png" alt="Corazón y cerebro tecnológicos abrazándose">
+  <section class="team-section">
+    <div class="team-container">
+      <h2 class="section-title" style="text-align: center;">Nuestro Equipo</h2>
+      <p class="section-text" style="text-align: center; max-width: 700px; margin: 0 auto 60px;">
+        Un grupo multidisciplinario apasionado por crear tecnología consciente
+      </p>
+      
+      <div class="team-grid">
+        <div class="team-member reveal-on-scroll">
+          <div class="member-photo">👨‍💻</div>
+          <h3 class="member-name">Equipo Heartenic</h3>
+          <p class="member-role">Fundadores</p>
+          <p class="member-bio">Ingenieros, diseñadores y expertos en bienestar unidos por una visión común.</p>
+        </div>
+        
+        <div class="team-member reveal-on-scroll">
+          <div class="member-photo">🧘</div>
+          <h3 class="member-name">Asesores de Mindfulness</h3>
+          <p class="member-role">Consultores</p>
+          <p class="member-bio">Maestros certificados que guían el desarrollo de nuestras experiencias de meditación.</p>
+        </div>
+        
+        <div class="team-member reveal-on-scroll">
+          <div class="member-photo">🔬</div>
+          <h3 class="member-name">Científicos de Datos</h3>
+          <p class="member-role">Investigación</p>
+          <p class="member-bio">Expertos en biometría y machine learning para personalizar tu experiencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <p>Es un movimiento social y cultural que busca <strong>normalizar el autocuidado</strong>, y hacer del bienestar
-    mental algo tan cotidiano y aspiracional como hacer ejercicio o comer saludable.</p>
-
-  <img class="imagen-uno" src="images/pazTecnologia.png" alt="Mujer sentada meditando sosteniendo un aparato">
-
-  <p>En un mundo saturado de distracciones, métricas y algoritmos diseñados para capturar nuestra atención, Heartenic
-    nace para cerrar la brecha entre el avance tecnológico y las necesidades humanas esenciales. Nuestra misión es
-    acompañarte en tu proceso de autoconocimiento, bienestar y crecimiento personal.</p>
-
-  <p>Si esto despertó algo en tu interior, acompáñanos. <strong>Eres parte del cambio que imaginamos.</strong></p>
+  <section class="cta-section reveal-on-scroll">
+    <h2 class="cta-title">Únete al Movimiento</h2>
+    <p class="cta-text">
+      Si esto despertó algo en tu interior, acompáñanos. <strong>Eres parte del cambio que imaginamos.</strong>
+    </p>
+    <a href="meditador.html" class="cta-button">Conoce El Meditador</a>
+  </section>
 
   <!-- Footer -->
   <div class="footer">
-    <p style="font-size: 1.2rem; margin: 0;">© 2026 Heartenic</p>
+    <p style="font-size: 1.2rem; margin: 0;"> 2026 Heartenic</p>
 
     <div class="social-icons-footer">
       <a href="https://www.instagram.com/heartenic/" target="_blank" class="social-icon-link-footer">
@@ -59,6 +129,8 @@
       Tecnología consciente para el bienestar humano.
     </p>
   </div>
+
+  <script src="scripts/animations.js"></script>
 </body>
 
 </html>

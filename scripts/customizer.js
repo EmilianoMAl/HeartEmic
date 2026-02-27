@@ -1,192 +1,131 @@
+document.addEventListener('DOMContentLoaded', () => {
 
-import { ESPLoader, Transport } from './esptool.bundle.js';
+    // --- CONFIGURACIÓN DE DATOS ---
+    
+    // Rutas de las imágenes de las mascotas
+    // IMPORTANTE: Asegúrate de tener estas imágenes en tu carpeta images/
+    const petImages = {
+        '1': 'images/mascota_1.png', // Mishi
+        '2': 'images/mascota_2.png', // Perrito
+        '3': 'images/mascota_3.png'  // Espíritu
+    };
 
-// DOM Elements
-const btnConnect = document.getElementById('btn-connect'); // Changed ID to match HTML
-const statusBadge = document.getElementById('connection-status');
-const groupProfile = document.getElementById('group-profile');
-const groupFlash = document.getElementById('group-flash');
-const btnFlash = document.getElementById('btn-flash');
-const progressFill = document.getElementById('progress-fill');
-const statusText = document.getElementById('status-text');
-const logContainer = document.getElementById('log-container');
-const toggleLogBtn = document.getElementById('toggle-log');
-const profileBtns = document.querySelectorAll('.profile-btn');
+    // Colores de fondo para el círculo de la mascota según elección (opcional, por estética)
+    const petBgColors = {
+        '1': '#d6ffcaff', // Verde suave
+        '2': '#c2eaff', // Azul suave
+        '3': '#ffd1dc'  // Rosa suave
+    };
 
-// State
-let device = null;
-let transport = null;
-let esploader = null;
-let connected = false;
-let selectedProfile = 'a'; // Default to A
-
-// --- Logging Helper ---
-function log(msg, type = 'info') {
-    const ts = new Date().toLocaleTimeString();
-    const color = type === 'error' ? '#ff5555' : (type === 'success' ? '#55ff55' : '#aaaaaa');
-    logContainer.innerHTML += `<div style="color:${color}">[${ts}] ${msg}</div>`;
-    logContainer.scrollTop = logContainer.scrollHeight;
-    console.log(`[${type}] ${msg}`);
-}
-
-// --- Toggle Log Visibility ---
-toggleLogBtn.addEventListener('click', () => {
-    if (logContainer.style.display === 'none') {
-        logContainer.style.display = 'block';
-        toggleLogBtn.textContent = 'Ocultar detalles ▲';
-    } else {
-        logContainer.style.display = 'none';
-        toggleLogBtn.textContent = 'Ver detalles técnicos ▼';
-    }
-});
-
-// --- Profile Selection ---
-profileBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove active class from all
-        profileBtns.forEach(b => b.classList.remove('active'));
-        // Add active to clicked
-        btn.classList.add('active');
-        // Update state
-        selectedProfile = btn.dataset.profile;
-        log(`Perfil seleccionado: ${selectedProfile.toUpperCase()}`);
-    });
-});
-
-// --- Connection Logic ---
-btnConnect.addEventListener('click', async () => {
-    if (connected) return; // Already connected
-
-    if (!navigator.serial) {
-        alert('Tu navegador no soporta Web Serial API. Por favor usa Chrome, Edge o Opera.');
-        return;
-    }
-
-    try {
-        device = await navigator.serial.requestPort();
-        transport = new Transport(device, true); // true for debug tracing if needed
-
-        log('Abriendo puerto serial...', 'info');
-
-        // Try to connect/detect
-        esploader = new ESPLoader({
-            transport,
-            baudrate: 115200, // Standard baudrate
-            romBaudrate: 115200,
-            terminal: {
-                clean: () => { /* no-op or clear log */ },
-                write: (data) => log(data.trim(), 'info'),
-                writeLine: (data) => log(data.trim(), 'info')
-            }
-        });
-
-        // Initialize connection
-        await esploader.main();
-
-        // Update UI State
-        connected = true;
-        statusBadge.textContent = 'Conectado';
-        statusBadge.className = 'status-badge status-connected';
-        statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> Conectado';
-
-        // Enable other groups
-        groupProfile.style.opacity = '1';
-        groupProfile.style.pointerEvents = 'auto';
-        groupFlash.style.opacity = '1';
-        groupFlash.style.pointerEvents = 'auto';
-
-        // Hide connect button to keep UI clean or change text
-        btnConnect.style.display = 'none';
-
-        log('¡Conexión exitosa! Chip detectado.', 'success');
-
-    } catch (e) {
-        console.error(e);
-        log(`Error de conexión: ${e.message}`, 'error');
-        alert('No se pudo conectar al dispositivo. Asegúrate de que no esté en uso por otra aplicación.');
-    }
-});
-
-// --- Flashing Logic ---
-btnFlash.addEventListener('click', async () => {
-    if (!connected) return;
-
-    // Disable button to prevent double click
-    btnFlash.disabled = true;
-    statusText.textContent = "Preparando...";
-    progressFill.style.width = '0%';
-
-    try {
-        const firmwareFile = `firmwares/profile_${selectedProfile}.bin`;
-        log(`Descargando firmware: ${firmwareFile}...`);
-
-        // 1. Fetch binary file
-        const response = await fetch(firmwareFile);
-        if (!response.ok) throw new Error(`No se encontró el archivo ${firmwareFile}`);
-
-        const blob = await response.blob();
-        const arrayBuffer = await blob.arrayBuffer();
-        const fileData = new Uint8Array(arrayBuffer); // Convert to Uint8Str/Array
-
-        // ESPTool-JS requires binary string for some versions, or Uint8Array. 
-        // Let's check the imported library version behavior. The code in meditador-panel used:
-        // const binStr = atob(data.firmware_b64);
-        // const fileArray = [{ data: binStr, address: 0x0 }];
-        // It seems it expects a "binary string" (latin1).
-
-        // Convert Uint8Array to Binary String
-        let binaryString = "";
-        for (let i = 0; i < fileData.length; i++) {
-            binaryString += String.fromCharCode(fileData[i]);
+    // Datos de respiración (en segundos)
+    const breathData = {
+        'corto': {
+            name: 'Respiraciones: Cortas',
+            in: 3,
+            hold: 2,
+            out: 3,
+            rest: 1
+        },
+        'medio': {
+            name: 'Respiraciones: Medias',
+            in: 4,
+            hold: 3,
+            out: 4,
+            rest: 1.5
+        },
+        'largo': {
+            name: 'Respiraciones: Largas',
+            in: 5,
+            hold: 4,
+            out: 5,
+            rest: 2
         }
+    };
 
-        log(`Firmware descargado. Tamaño: ${fileData.length} bytes.`, 'success');
+    // Estado actual (valores por defecto)
+    let currentPetId = '1';
+    let currentBreathId = 'corto';
 
-        // 2. Prepare File Array
-        // Address 0x0 for C6 merged binaries (bootloader + partition + app)
-        const fileArray = [{ data: binaryString, address: 0x0000 }];
+    // --- REFERENCIAS AL DOM ---
+    const petImgElement = document.getElementById('pet-image');
+    const petBgElement = document.querySelector('.pet-display');
+    
+    const breathTitle = document.getElementById('breath-title-display');
+    const valIn = document.getElementById('val-inhale');
+    const valHold = document.getElementById('val-hold');
+    const valOut = document.getElementById('val-exhale');
+    const valRest = document.getElementById('val-rest');
 
-        statusText.textContent = "Borrando flash (puede tardar)...";
-        statusBadge.className = 'status-badge status-busy';
-        statusBadge.textContent = 'Ocupado...';
+    const petButtons = document.querySelectorAll('.pet-btn');
+    const breathButtons = document.querySelectorAll('.breath-btn');
+    const flashBtn = document.getElementById('btn-flash');
 
-        // 3. Write Flash
-        await esploader.writeFlash({
-            fileArray: fileArray,
-            flashSize: 'keep',
-            flashMode: 'dio', // Standard for ESP32
-            flashFreq: '40m',
-            eraseAll: false, // Don't erase entire chip, just necessary sectors
-            compress: true,
-            reportProgress: (fileIndex, written, total) => {
-                const percent = Math.round((written / total) * 100);
-                progressFill.style.width = `${percent}%`;
-                statusText.textContent = `Escribiendo: ${percent}%`;
-            }
-        });
+    // --- FUNCIONES ---
 
-        statusText.textContent = "¡Flasheo Completado!";
-        log('Flasheo completado con éxito.', 'success');
+    // Función para actualizar la UI basada en el estado actual
+    function updateUI() {
+        // 1. Actualizar imagen mascota con transición suave
+        petImgElement.style.opacity = '0'; // Fade out
+        
+        setTimeout(() => {
+            petImgElement.src = petImages[currentPetId];
+            petBgElement.style.backgroundColor = petBgColors[currentPetId];
+            petImgElement.style.opacity = '1'; // Fade in
+        }, 200);
 
-        // 4. Reset Device
-        log('Reiniciando dispositivo...');
-        await transport.setDTR(false);
-        await transport.setRTS(true);
-        await new Promise(r => setTimeout(r, 100));
-        await transport.setRTS(false);
-
-        statusBadge.className = 'status-badge status-connected';
-        statusBadge.textContent = 'Conectado';
-        alert('¡Tu Meditador ha sido actualizado con éxito!');
-
-    } catch (e) {
-        console.error(e);
-        log(`Error al flashear: ${e.message}`, 'error');
-        statusText.textContent = "Error al flashear";
-        statusBadge.className = 'status-badge status-disconnected';
-        statusBadge.textContent = 'Error';
-        alert(`Ocurrió un error: ${e.message}`);
-    } finally {
-        btnFlash.disabled = false;
+        // 2. Actualizar datos de respiración
+        const data = breathData[currentBreathId];
+        breathTitle.textContent = data.name;
+        valIn.textContent = data.in + 's';
+        valHold.textContent = data.hold + 's';
+        valOut.textContent = data.out + 's';
+        valRest.textContent = data.rest + 's';
     }
+
+    // --- EVENT LISTENERS ---
+
+    // Click en botones de Mascota
+    petButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remover clase active de todos
+            petButtons.forEach(b => b.classList.remove('active'));
+            // Añadir active al clickeado
+            btn.classList.add('active');
+            
+            // Actualizar estado
+            currentPetId = btn.getAttribute('data-pet');
+            updateUI();
+        });
+    });
+
+    // Click en botones de Respiración
+    breathButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remover clase active de todos
+            breathButtons.forEach(b => b.classList.remove('active'));
+            // Añadir active al clickeado
+            btn.classList.add('active');
+            
+            // Actualizar estado
+            currentBreathId = btn.getAttribute('data-breath');
+            updateUI();
+        });
+    });
+
+    // Simulación del botón Flash
+    flashBtn.addEventListener('click', () => {
+        flashBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Conectando...';
+        setTimeout(() => {
+            flashBtn.innerHTML = '<i class="fas fa-check"></i> ¡Listo!';
+            flashBtn.style.backgroundColor = '#4caf50'; // Verde éxito
+            
+            setTimeout(() => {
+                flashBtn.innerHTML = '<i class="fas fa-bolt"></i> Cargar al Dispositivo';
+                flashBtn.style.backgroundColor = ''; // Reset color
+            }, 3000);
+        }, 1500);
+    });
+
+    // Inicializar UI
+    updateUI();
 });

@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+
+:root {
+  --sage-green: #8BA888;
+  --sage-green-light: #A8C5A4;
+  --sage-green-dark: #6B8E68;
+  --off-white: #FAFAF8;
+  --soft-blue: #E8F4F8;
+  --soft-blue-accent: #B8D8E8;
+  --dark-gray: #1A1A1A;
+  --medium-gray: #4A4A4A;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--off-white);
+  color: var(--dark-gray);
+  overflow-x: hidden;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mesh-gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #FAFAF8 0%, #E8F4F8 50%, #F0F8F0 100%);
+  animation: meshBreathing 20s ease-in-out infinite;
+}
+
+@keyframes meshBreathing {
+  0%, 100% {
+    background: linear-gradient(135deg, #FAFAF8 0%, #E8F4F8 50%, #F0F8F0 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, #F0F8F0 0%, #FAFAF8 50%, #E8F4F8 100%);
+  }
+}
+
+.error-container {
+  text-align: center;
+  padding: 40px;
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+}
+
+.wave-container {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 40px;
+  position: relative;
+}
+
+.wave-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.wave {
+  fill: none;
+  stroke: var(--sage-green);
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.6;
+}
+
+.wave-1 {
+  animation: wave-animation 3s ease-in-out infinite;
+}
+
+.wave-2 {
+  animation: wave-animation 3s ease-in-out infinite;
+  animation-delay: 0.5s;
+  opacity: 0.4;
+}
+
+.wave-3 {
+  animation: wave-animation 3s ease-in-out infinite;
+  animation-delay: 1s;
+  opacity: 0.3;
+}
+
+@keyframes wave-animation {
+  0%, 100% {
+    d: path("M 0 150 Q 75 100, 150 150 T 300 150");
+  }
+  50% {
+    d: path("M 0 150 Q 75 200, 150 150 T 300 150");
+  }
+}
+
+.error-code {
+  font-size: 120px;
+  font-weight: 700;
+  color: var(--sage-green);
+  margin-bottom: 20px;
+  letter-spacing: -4px;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.error-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--dark-gray);
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.error-message {
+  font-size: 18px;
+  color: var(--medium-gray);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
+.btn-home {
+  display: inline-block;
+  padding: 16px 40px;
+  background: var(--sage-green);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.6s;
+}
+
+.btn-home::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-home:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-home:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(139, 168, 136, 0.4);
+}
+
+.breathing-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 168, 136, 0.1) 0%, transparent 70%);
+  animation: breathe 4s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.2;
+  }
+}
+
+@media (max-width: 768px) {
+  .error-code {
+    font-size: 80px;
+  }
+  
+  .error-title {
+    font-size: 28px;
+  }
+  
+  .error-message {
+    font-size: 16px;
+  }
+  
+  .wave-container {
+    width: 200px;
+    height: 200px;
+  }
+}

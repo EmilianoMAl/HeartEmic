@@ -1,64 +1,153 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<!-- Head pagina Herramientas -->
-
 <head>
-  <title>Herramientas</title>
+  <title>Herramientas para Desarrolladores - Heartenic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <link rel="stylesheet" href="css/topNfoot.css">
-  <link rel="stylesheet" href="css/herramientas.css">
+  <link rel="stylesheet" href="css/herramientas-new.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="shortcut icon" href="images/logoHeartenic.png">
 </head>
 
 <body>
-  <!-- Barra fija superior -->
+  <div class="mesh-gradient-bg"></div>
+  
   <div class="barra-superior">
-    <a href="index.html" class="logo-container">
+    <a href="index.html">
       <img class="logo" src="images/logoHeartenic.png" alt="Logo Heartenic">
     </a>
-    <h1>Herramientas de Desarrolladores</h1>
-    <div class="spacer"></div> <!-- para centrar titulo -->
+    <h1>Heartenic</h1>
+    <a class="login" href="logInSoon.html">
+      Iniciar sesión
+    </a>
   </div>
 
-  <div class="espacio-inicio"></div>
-
-  <div class="grid-grid">
-    <div class="grid-container">
-      <!-- Positive API -->
-      <a class="content-container" href="https://positive-api.online" target="_blank">
-        <h3>The positive API</h3>
-        <div class="linea-horizontal"></div>
-        <p class="texto-contenido">
-          Un API gratuita de frases...<br>
-          Ayudándote a construir apps más positivas.
-        </p>
-        <div class="contenedor-imagen" style="background-color: #fff0f5;">
-          <div class="quote-container">
-            <span id="quote-display" class="quote">Cargando frases...</span>
-          </div>
-        </div>
-        <p style="text-align: center;">Leer más ></p>
-      </a>
-
-      <!-- Diseño del meditador -->
-      <a class="content-container" href="documentacion/Documentacion-Meditador-Bolsillo.pdf" target="_blank">
-        <h3>Diseño del meditador</h3>
-        <div class="linea-horizontal"></div>
-        <p class="texto-contenido">Una plataforma open-source basada en ESP32.</p>
-        <div class="contenedor-imagen" style="background-color: #DBFFD6;">
-          <img class="imagen-contenido" src="images/meditadorESP.png" alt="imagen del meditador">
-        </div>
-        <p style="text-align: center;">Leer más ></p>
-      </a>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="terminal-title terminal-text">Herramientas para Desarrolladores</h1>
+      <p class="hero-subtitle">Recursos open-source para crear tecnología consciente</p>
     </div>
-  </div>
+  </section>
+
+  <section class="tools-section">
+    <h2 class="section-title">Nuestros Proyectos</h2>
+    
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-icon">💬</span>
+        <h3>The Positive API</h3>
+        <p>
+          Una API REST gratuita que proporciona frases motivacionales, afirmaciones positivas y mensajes de bienestar.
+          Perfecta para integrar en tus aplicaciones de salud mental y mindfulness.
+        </p>
+        <div class="tool-links">
+          <a href="https://positive-api.online" target="_blank" class="tool-link">Visitar API</a>
+          <a href="#api-docs" class="tool-link secondary">Ver Docs</a>
+        </div>
+      </div>
+      
+      <div class="tool-card">
+        <span class="tool-icon">🧘</span>
+        <h3>Meditador de Bolsillo</h3>
+        <p>
+          Plataforma open-source basada en ESP32 para crear tu propio dispositivo de meditación.
+          Incluye esquemáticos, código fuente y guías de ensamblaje completas.
+        </p>
+        <div class="tool-links">
+          <a href="documentacion/Documentacion-Meditador-Bolsillo.pdf" target="_blank" class="tool-link">Documentación</a>
+          <a href="https://github.com/heartenic" target="_blank" class="tool-link secondary">GitHub</a>
+        </div>
+      </div>
+      
+      <div class="tool-card">
+        <span class="tool-icon">📚</span>
+        <h3>Guías de Bienestar</h3>
+        <p>
+          Recursos educativos sobre mindfulness, meditación y salud mental.
+          Contenido curado por expertos para desarrolladores y creadores.
+        </p>
+        <div class="tool-links">
+          <a href="#" class="tool-link">Próximamente</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="api-docs" class="api-section">
+    <div class="api-container">
+      <h2 class="section-title">The Positive API - Documentación</h2>
+      
+      <div class="api-grid">
+        <div class="api-info">
+          <h3>API REST Gratuita</h3>
+          <p>
+            Accede a miles de frases motivacionales, afirmaciones y mensajes de bienestar a través de endpoints simples.
+            Sin necesidad de autenticación para uso básico.
+          </p>
+          
+          <ul class="api-features">
+            <li>Sin límite de requests para uso personal</li>
+            <li>Respuestas en formato JSON</li>
+            <li>Múltiples categorías de contenido</li>
+            <li>Soporte CORS habilitado</li>
+            <li>Actualizaciones constantes de contenido</li>
+          </ul>
+          
+          <a href="https://positive-api.online" target="_blank" class="tool-link" style="display: inline-block; margin-top: 20px;">Explorar API Completa</a>
+        </div>
+        
+        <div class="code-example">
+          <div class="code-header">
+            <span class="code-label">Ejemplo de uso</span>
+            <button class="copy-btn" data-code="fetch('https://positive-api.online/api/random')\n  .then(res => res.json())\n  .then(data => console.log(data.quote));">
+              <i class="fas fa-copy"></i> Copiar
+            </button>
+          </div>
+          <pre class="code-block"><span class="keyword">fetch</span>(<span class="string">'https://positive-api.online/api/random'</span>)
+  .<span class="keyword">then</span>(res => res.json())
+  .<span class="keyword">then</span>(data => console.log(data.quote));</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="resources-section">
+    <h2 class="section-title">Recursos Adicionales</h2>
+    
+    <div class="resources-grid">
+      <div class="resource-card">
+        <span class="resource-icon">🛠️</span>
+        <h4>Hardware Abierto</h4>
+        <p>Esquemáticos y diseños PCB del Meditador</p>
+        <a href="#" class="resource-link">Descargar</a>
+      </div>
+      
+      <div class="resource-card">
+        <span class="resource-icon">💻</span>
+        <h4>Código Fuente</h4>
+        <p>Firmware completo y librerías ESP32</p>
+        <a href="https://github.com/heartenic" target="_blank" class="resource-link">Ver en GitHub</a>
+      </div>
+      
+      <div class="resource-card">
+        <span class="resource-icon">🎨</span>
+        <h4>Assets de Diseño</h4>
+        <p>Logos, iconos y guías de marca</p>
+        <a href="#" class="resource-link">Próximamente</a>
+      </div>
+      
+      <div class="resource-card">
+        <span class="resource-icon">📹</span>
+        <h4>Tutoriales en Video</h4>
+        <p>Guías paso a paso en nuestro canal</p>
+        <a href="https://www.youtube.com/@Heartenic" target="_blank" class="resource-link">Ver Videos</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <div class="footer">
-    <p style="font-size: 1.2rem; margin: 0;">© 2026 Heartenic</p>
+    <p style="font-size: 1.2rem; margin: 0;"> 2026 Heartenic</p>
 
     <div class="social-icons-footer">
       <a href="https://www.instagram.com/heartenic/" target="_blank" class="social-icon-link-footer">
@@ -75,6 +164,7 @@
   </div>
 
   <script src="scripts/quotes.js"></script>
+  <script src="scripts/animations.js"></script>
 
 </body>
 

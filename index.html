@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<!-- Head pagina heartenic -->
-
 <head>
-  <title>Heartenic</title>
+  <title>Heartenic - Cultiva tu mundo interno</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/index-new.css">
   <link rel="shortcut icon" href="images/logoHeartenic.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
-  <!-- Barra fija superior -->
+  <div class="mesh-gradient-bg"></div>
+  
   <div class="barra-superior">
     <a href="index.html">
       <img class="logo" src="images/logoHeartenic.png" alt="Logo Heartenic">
@@ -24,38 +21,32 @@
     </a>
   </div>
 
-  <!-- Inicio pagina -->
   <div class="landing">
+    <div class="breathing-mode">
+      <div class="breathing-circle">
+        <div class="breath-text">Inhala...</div>
+      </div>
+    </div>
 
     <div class="hero-container">
-      <div class="blur-shape shape-1"></div>
-      <div class="blur-shape shape-2"></div>
-      <div class="blur-shape shape-3"></div>
       <h1 class="hero-title">Cultiva tu mundo interno</h1>
       <p class="hero-subtitle">Un futuro más humano empieza contigo</p>
     </div>
 
-    <!-- botones a redes -->
     <div class="socials-grid">
-      <!-- Asegúrate de tener Font Awesome incluido en tu HTML (ver instrucciones abajo) -->
       <a href="https://www.instagram.com/heartenic/" target="_blank" class="social-icon-link">
-        <i class="fab fa-instagram"></i> <!-- Icono de Instagram -->
+        <i class="fab fa-instagram"></i>
       </a>
-
       <a href="https://www.youtube.com/@Heartenic" target="_blank" class="social-icon-link">
-        <i class="fab fa-youtube"></i> <!-- Icono de YouTube -->
+        <i class="fab fa-youtube"></i>
       </a>
     </div>
 
-    <!-- Icono bajar (solo mobile) -->
     <div class="icono-bajar">
       <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <!-- Círculo exterior -->
-        <circle cx="12" cy="12" r="10" fill="none" stroke="ivory" />
-
-        <!-- Flecha (animada con clase scroll-arrow) -->
-        <path class="scroll-arrow" d="M12 8v8m0 0l-3-3m3 3l3-3" stroke="ivory" stroke-width="2" />
+        <circle cx="12" cy="12" r="10" fill="none" stroke="#8BA888" />
+        <path class="scroll-arrow" d="M12 8v8m0 0l-3-3m3 3l3-3" stroke="#8BA888" stroke-width="2" />
       </svg>
     </div>
   </div>
@@ -64,35 +55,32 @@
 
   <div class="grid-grid">
     <div class="grid-container">
-      <!-- Conócenos -->
       <a class="content-container" href="about.html">
         <h3>Conócenos Mejor</h3>
         <div class="linea-horizontal"></div>
         <p class="texto-contenido">Atrévete a descubrir quiénes somos y lo que nos impulsa a crear.</p>
-        <div class="contenedor-imagen" style="background-color: pink;">
+        <div class="contenedor-imagen" style="background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F0 100%);">
           <img class="imagen-contenido" src="images/conocenosTres.png" alt="Imagen de una persona floreciendo">
         </div>
         <p style="text-align: center;">Leer más ></p>
       </a>
 
-      <!-- Meditador -->
       <a class="content-container" href="meditador.html">
         <h3>El Meditador de Bolsillo</h3>
         <div class="linea-horizontal"></div>
         <p class="texto-contenido">Tu pausa, en cualquier lugar.</p>
-        <div class="contenedor-imagen" style="background-color: #ffffbf;">
+        <div class="contenedor-imagen" style="background: linear-gradient(135deg, #FFFBEA 0%, #FFF8DC 100%);">
           <img class="imagen-contenido" src="images/meditadoresDos.png" alt="Imagen del meditador"
-            style="filter: drop-shadow(0 -4px 18px rgba(0,0,0,0.6));/* x y blur color */ ">
+            style="filter: drop-shadow(0 -4px 18px rgba(0,0,0,0.15));">
         </div>
         <p style="text-align: center;">Leer más ></p>
       </a>
 
-      <!-- Herramientas -->
       <a class="content-container" href="herramientas.html">
         <h3>Herramientas para Desarrolladores</h3>
         <div class="linea-horizontal"></div>
         <p class="texto-contenido">Explora los recursos que te ayudan a crear desde el corazón.</p>
-        <div class="contenedor-imagen" style="background-color: #c2eaff;">
+        <div class="contenedor-imagen" style="background: linear-gradient(135deg, #E8F4F8 0%, #F0F8FF 100%);">
           <img class="imagen-contenido" src="images/herramientas.png" alt="Herramientas de creadores">
         </div>
         <p style="text-align: center;">Leer más ></p>
@@ -100,9 +88,79 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <section class="tech-stack-section">
+    <div class="tech-stack-container">
+      <h2 class="tech-stack-title">Tecnología de Vanguardia</h2>
+      <p class="tech-stack-subtitle">
+        El Meditador de Bolsillo combina hardware premium con inteligencia de datos avanzada
+      </p>
+      
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-icon">🧠</div>
+          <h4>Inteligencia de Datos</h4>
+          <p>Análisis en tiempo real de patrones biométricos para personalizar tu experiencia de meditación</p>
+        </div>
+        
+        <div class="tech-card">
+          <div class="tech-icon">🔒</div>
+          <h4>Ciberseguridad</h4>
+          <p>Encriptación de nivel empresarial para proteger tu información más sensible</p>
+        </div>
+        
+        <div class="tech-card">
+          <div class="tech-icon">⚡</div>
+          <h4>Procesamiento Edge</h4>
+          <p>Toda la computación ocurre en el dispositivo, sin necesidad de conexión constante</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="roadmap-section">
+    <h2 class="roadmap-title">Nuestro Camino</h2>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Q1 2024</div>
+          <h4>Prototipo Funcional</h4>
+          <p>Desarrollo del primer prototipo funcional del Meditador de Bolsillo con sensores biométricos básicos</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Q2 2025</div>
+          <h4>Pruebas Beta</h4>
+          <p>Programa piloto con 100 usuarios para refinar la experiencia y algoritmos de meditación</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Q3 2026</div>
+          <h4>Lanzamiento Plataforma</h4>
+          <p>Apertura de la plataforma web con herramientas para desarrolladores y API pública</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Q4 2026</div>
+          <h4>Producción Masiva</h4>
+          <p>Lanzamiento oficial del dispositivo al mercado global con envíos internacionales</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="footer">
-    <p style="font-size: 1.2rem; margin: 0;">© 2026 Heartenic</p>
+    <p style="font-size: 1.2rem; margin: 0;"> 2026 Heartenic</p>
 
     <div class="social-icons-footer">
       <a href="https://www.instagram.com/heartenic/" target="_blank" class="social-icon-link-footer">
@@ -117,14 +175,10 @@
       Tecnología consciente para el bienestar humano.
     </p>
   </div>
+
+  <script src="scripts/animations.js"></script>
 </body>
-
 </html>
-
-<!-- 
-                                                                  =++++                             
-                                                        +++      ++****=                            
-                                                     =+****=     =****+=                            
                                                     ++******+   =*****++                            
                                                      +*******++ +******=                            
                                                      ++*******+=*******++=+                         
