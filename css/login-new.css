@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
 :root {
+  --rose-primary: #D03360;
+  --rose-light: #E8607E;
+  --rose-dark: #A8224A;
+  --rose-lighter: #F4ADC0;
   --sage-green: #8BA888;
   --sage-green-light: #A8C5A4;
   --sage-green-dark: #6B8E68;
   --off-white: #FAFAF8;
-  --soft-blue: #E8F4F8;
   --dark-gray: #1A1A1A;
 }
 
@@ -22,7 +25,7 @@ body {
   position: relative;
   min-height: 100vh;
   max-width: 100% !important;
-  background: linear-gradient(135deg, #FAFAF8 0%, #E8F4F8 50%, #F0F8F0 100%);
+  background: linear-gradient(135deg, #FAFAF8 0%, #FDF0F4 50%, #FEF6F9 100%);
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -35,7 +38,7 @@ body {
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 168, 136, 0.3) 0%, rgba(139, 168, 136, 0.1) 50%, transparent 100%);
+  background: radial-gradient(circle, rgba(208, 51, 96, 0.2) 0%, rgba(208, 51, 96, 0.08) 50%, transparent 100%);
   animation: move-up6 3s ease-in-out infinite alternate;
   top: -100px;
   left: -100px;
@@ -49,7 +52,7 @@ body {
   width: 350px;
   height: 350px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(184, 216, 232, 0.3) 0%, rgba(184, 216, 232, 0.1) 50%, transparent 100%);
+  background: radial-gradient(circle, rgba(244, 173, 192, 0.25) 0%, rgba(244, 173, 192, 0.08) 50%, transparent 100%);
   animation: move-up6 3s ease-in-out infinite alternate-reverse;
 }
 
@@ -115,7 +118,7 @@ a {
   border-radius: 12px;
   color: var(--dark-gray);
   background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(139, 168, 136, 0.2);
+  border: 1px solid rgba(208, 51, 96, 0.2);
   font-size: 15px;
   font-family: 'Inter', sans-serif;
   transition: all 0.3s ease;
@@ -134,9 +137,9 @@ a {
 
 .login form .input-box input:focus {
   outline: none;
-  border-color: var(--sage-green);
+  border-color: var(--rose-primary);
   background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 4px 12px rgba(139, 168, 136, 0.15);
+  box-shadow: 0 4px 12px rgba(208, 51, 96, 0.15);
 }
 
 .login form .input-box i {
@@ -144,7 +147,7 @@ a {
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
-  color: var(--sage-green);
+  color: var(--rose-primary);
   font-size: 18px;
 }
 
@@ -177,7 +180,7 @@ a {
   height: 20px;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.6);
-  border: 2px solid rgba(139, 168, 136, 0.3);
+  border: 2px solid rgba(208, 51, 96, 0.25);
   transition: all 0.3s ease;
 }
 
@@ -190,18 +193,18 @@ a {
   width: 8px;
   height: 8px;
   border-radius: 3px;
-  background: var(--sage-green);
+  background: var(--rose-primary);
   transition: 0.3s ease;
   opacity: 0;
-  box-shadow: 0 2px 8px rgba(139, 168, 136, 0.3);
+  box-shadow: 0 2px 8px rgba(208, 51, 96, 0.3);
 }
 
-.login form .rembar input:checked + label::before {
+.login form .rembar input:checked+label::before {
   background: rgba(139, 168, 136, 0.1);
-  border-color: var(--sage-green);
+  border-color: var(--rose-primary);
 }
 
-.login form .rembar input:checked + label::after {
+.login form .rembar input:checked+label::after {
   opacity: 1;
 }
 
@@ -212,8 +215,8 @@ a {
   border-radius: 12px;
   color: white;
   margin-bottom: 24px;
-  background: var(--sage-green);
-  border: 1px solid var(--sage-green);
+  background: var(--rose-primary);
+  border: 1px solid var(--rose-primary);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   font-weight: 600;
@@ -242,9 +245,9 @@ a {
 }
 
 .login form button:hover {
-  background: var(--sage-green-dark);
+  background: var(--rose-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 168, 136, 0.4);
+  box-shadow: 0 8px 20px rgba(208, 51, 96, 0.4);
 }
 
 .login form button:active {
@@ -260,14 +263,14 @@ a {
 }
 
 .login form .links a {
-  color: var(--sage-green-dark);
+  color: var(--rose-dark);
   font-weight: 500;
   font-size: 14px;
   transition: all 0.3s ease;
 }
 
 .login form .links a:hover {
-  color: var(--sage-green);
+  color: var(--rose-primary);
   text-decoration: underline;
 }
 

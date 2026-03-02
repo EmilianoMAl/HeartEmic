@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
 :root {
+  --rose-primary: #D03360;
+  --rose-light: #E8607E;
+  --rose-lighter: #F4ADC0;
+  --rose-dark: #A8224A;
+  --rose-bg: #FDF0F4;
   --sage-green: #8BA888;
   --sage-green-light: #A8C5A4;
   --sage-green-dark: #6B8E68;
   --off-white: #FAFAF8;
-  --soft-blue: #E8F4F8;
-  --soft-blue-accent: #B8D8E8;
   --dark-gray: #1A1A1A;
   --medium-gray: #4A4A4A;
 }
@@ -36,16 +39,23 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: linear-gradient(135deg, #FAFAF8 0%, #E8F4F8 50%, #F0F8F0 100%);
+  background: linear-gradient(135deg, #FAFAF8 0%, #FDF0F4 50%, #FEF6F9 100%);
   animation: meshBreathing 20s ease-in-out infinite;
 }
 
 @keyframes meshBreathing {
-  0%, 100% {
-    background: linear-gradient(135deg, #FAFAF8 0%, #E8F4F8 50%, #F0F8F0 100%);
+
+  0%,
+  100% {
+    background: linear-gradient(135deg, #FAFAF8 0%, #FDF0F4 50%, #FEF6F9 100%);
   }
-  50% {
-    background: linear-gradient(135deg, #F0F8F0 0%, #FAFAF8 50%, #E8F4F8 100%);
+
+  33% {
+    background: linear-gradient(135deg, #FEF6F9 0%, #FAFAF8 50%, #FDF0F4 100%);
+  }
+
+  66% {
+    background: linear-gradient(135deg, #FDF0F4 0%, #FEF6F9 50%, #FAFAF8 100%);
   }
 }
 
@@ -61,7 +71,7 @@ body {
   background: rgba(250, 250, 248, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(139, 168, 136, 0.1);
+  border-bottom: 1px solid rgba(208, 51, 96, 0.1);
   z-index: 1000;
   transition: all 0.3s ease;
 }
@@ -83,13 +93,13 @@ body {
 .barra-superior h1 {
   font-size: 24px;
   font-weight: 700;
-  color: var(--sage-green-dark);
+  color: var(--rose-dark);
   letter-spacing: -0.5px;
 }
 
 .barra-superior .login {
   padding: 12px 28px;
-  background: var(--sage-green);
+  background: var(--rose-primary);
   color: white;
   text-decoration: none;
   border-radius: 10px;
@@ -99,7 +109,7 @@ body {
 
 .barra-superior .login:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 168, 136, 0.4);
+  box-shadow: 0 8px 20px rgba(208, 51, 96, 0.4);
 }
 
 .hero-section {
@@ -128,7 +138,7 @@ body {
 
 .terminal-title::before {
   content: '> ';
-  color: var(--sage-green);
+  color: var(--rose-primary);
 }
 
 .hero-subtitle {
@@ -145,6 +155,7 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -192,7 +203,7 @@ body {
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, var(--sage-green) 0%, var(--soft-blue-accent) 100%);
+  background: linear-gradient(90deg, var(--rose-primary) 0%, var(--rose-light) 100%);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
@@ -205,7 +216,7 @@ body {
 .tool-card:hover {
   transform: translateY(-12px);
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
-  border-color: rgba(139, 168, 136, 0.4);
+  border-color: rgba(208, 51, 96, 0.35);
 }
 
 .tool-icon {
@@ -236,7 +247,7 @@ body {
 
 .tool-link {
   padding: 10px 20px;
-  background: var(--sage-green);
+  background: var(--rose-primary);
   color: white;
   text-decoration: none;
   border-radius: 8px;
@@ -247,24 +258,24 @@ body {
 }
 
 .tool-link:hover {
-  background: var(--sage-green-dark);
+  background: var(--rose-dark);
   transform: translateY(-2px);
 }
 
 .tool-link.secondary {
   background: transparent;
-  color: var(--sage-green-dark);
-  border: 2px solid var(--sage-green);
+  color: var(--rose-dark);
+  border: 2px solid var(--rose-primary);
 }
 
 .tool-link.secondary:hover {
-  background: var(--sage-green);
+  background: var(--rose-primary);
   color: white;
 }
 
 .api-section {
   padding: 100px 5%;
-  background: linear-gradient(135deg, rgba(139, 168, 136, 0.05) 0%, rgba(232, 244, 248, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(208, 51, 96, 0.04) 0%, rgba(244, 173, 192, 0.1) 100%);
   margin: 80px 0;
 }
 
@@ -312,7 +323,7 @@ body {
   content: '✓';
   position: absolute;
   left: 0;
-  color: var(--sage-green);
+  color: var(--rose-primary);
   font-weight: 700;
   font-size: 18px;
 }
@@ -322,7 +333,7 @@ body {
   backdrop-filter: blur(20px);
   border-radius: 16px;
   padding: 24px;
-  border: 1px solid rgba(139, 168, 136, 0.2);
+  border: 1px solid rgba(208, 51, 96, 0.15);
   position: relative;
 }
 
@@ -338,16 +349,16 @@ body {
 .code-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
-  color: var(--sage-green-light);
+  color: var(--rose-lighter);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .copy-btn {
   padding: 6px 12px;
-  background: rgba(139, 168, 136, 0.2);
-  color: var(--sage-green-light);
-  border: 1px solid rgba(139, 168, 136, 0.3);
+  background: rgba(208, 51, 96, 0.15);
+  color: var(--rose-lighter);
+  border: 1px solid rgba(208, 51, 96, 0.2);
   border-radius: 6px;
   font-size: 12px;
   cursor: pointer;
@@ -356,7 +367,7 @@ body {
 }
 
 .copy-btn:hover {
-  background: rgba(139, 168, 136, 0.3);
+  background: rgba(208, 51, 96, 0.25);
   transform: translateY(-2px);
 }
 
@@ -399,7 +410,7 @@ body {
   backdrop-filter: blur(20px);
   padding: 32px;
   border-radius: 20px;
-  border: 1px solid rgba(139, 168, 136, 0.2);
+  border: 1px solid rgba(208, 51, 96, 0.15);
   transition: all 0.3s ease;
   text-align: center;
 }
@@ -431,7 +442,7 @@ body {
 .resource-link {
   display: inline-block;
   padding: 8px 20px;
-  background: var(--sage-green);
+  background: var(--rose-primary);
   color: white;
   text-decoration: none;
   border-radius: 8px;
@@ -441,12 +452,12 @@ body {
 }
 
 .resource-link:hover {
-  background: var(--sage-green-dark);
+  background: var(--rose-dark);
   transform: translateY(-2px);
 }
 
 .footer {
-  background: linear-gradient(135deg, var(--sage-green-dark) 0%, var(--sage-green) 100%);
+  background: linear-gradient(135deg, var(--rose-dark) 0%, var(--rose-primary) 50%, var(--rose-light) 100%);
   color: white;
   padding: 60px 5%;
   text-align: center;
@@ -489,15 +500,15 @@ body {
   .terminal-title {
     font-size: 36px;
   }
-  
+
   .section-title {
     font-size: 36px;
   }
-  
+
   .tools-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .barra-superior h1 {
     font-size: 18px;
   }
