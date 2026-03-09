@@ -4,35 +4,280 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesión - Heartenic</title>
-  <link rel="stylesheet" href="css/login-new.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Próximamente - Heartenic</title>
   <link rel="shortcut icon" href="images/logoHeartenic.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --rose-primary: #D03360;
+      --rose-light: #E8607E;
+      --rose-dark: #A8224A;
+      --c1: #38bdf8;
+      --c2: #a855f7;
+      --c3: #D03360;
+    }
+
+    html,
+    body {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: #060515;
+      color: white;
+      overflow: hidden;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-radial-gradient(circle, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 2px);
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      opacity: 0.35;
+      animation: grain 0.25s steps(2) infinite;
+      z-index: 0;
+    }
+
+    @keyframes grain {
+      to {
+        transform: translate(2px, -2px);
+      }
+    }
+
+    .bg-orbs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+      animation: orbFloat 12s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      width: 500px;
+      height: 500px;
+      background: var(--rose-primary);
+      top: -150px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 400px;
+      height: 400px;
+      background: var(--c2);
+      bottom: -100px;
+      right: -80px;
+      animation-delay: -4s;
+    }
+
+    .orb-3 {
+      width: 300px;
+      height: 300px;
+      background: var(--c1);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -8s;
+    }
+
+    @keyframes orbFloat {
+
+      0%,
+      100% {
+        transform: translateY(0px) scale(1);
+      }
+
+      50% {
+        transform: translateY(-40px) scale(1.08);
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeInDown 0.8s ease forwards 0.2s;
+    }
+
+    .logo-area img {
+      height: 52px;
+    }
+
+    .logo-area span {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #fff, var(--rose-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card {
+      width: min(520px, 92vw);
+      padding: 3rem 2.5rem;
+      border-radius: 28px;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 0 60px rgba(208, 51, 96, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+      opacity: 0;
+      animation: fadeInUp 0.9s ease forwards 0.5s, float 6s ease-in-out 1.4s infinite;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 30px;
+      background: linear-gradient(120deg, transparent 20%, var(--c1), var(--rose-primary), var(--c2), transparent 80%);
+      filter: blur(28px);
+      opacity: 0.35;
+      z-index: -1;
+      animation: holo 4s linear infinite;
+      background-size: 400% 100%;
+    }
+
+    @keyframes holo {
+      to {
+        background-position: 400% 0;
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-18px);
+      }
+    }
+
+    .emoji {
+      font-size: 3.5rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+      background: linear-gradient(90deg, #fff 30%, var(--rose-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 2rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      color: white;
+      text-decoration: none;
+      background: linear-gradient(90deg, var(--rose-dark), var(--rose-primary), var(--rose-light));
+      background-size: 300% 100%;
+      animation: holo 3s linear infinite;
+      box-shadow: 0 0 28px rgba(208, 51, 96, 0.55);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 0 40px rgba(208, 51, 96, 0.75);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
   <div class="container">
-    <div class="login">
-      <h1>Iniciar Sesión</h1>
-      <form action="">
-        <div class="input-box">
-          <input type="email" placeholder="Correo electrónico" required>
-          <i class="fa fa-envelope"></i>
-        </div>
-        <div class="input-box">
-          <input type="password" placeholder="Contraseña" required>
-          <i class="fa fa-lock"></i>
-        </div>
-        <div class="rembar">
-          <input id="rembar" type="checkbox">
-          <label for="rembar">Recordarme</label>
-        </div>
-        <button type="submit">INICIAR SESIÓN</button>
-        <div class="links">
-          <a href="#">¿Olvidaste tu contraseña?</a>
-          <a href="#">¿No tienes cuenta? Regístrate</a>
-        </div>
-      </form>
+    <div class="logo-area">
+      <img src="images/logoHeartenic.png" alt="Heartenic Logo">
+      <span>Heartenic</span>
+    </div>
+
+    <div class="card">
+      <span class="emoji">🔐</span>
+      <h1>Pronto podrás iniciar sesión</h1>
+      <p>Estamos trabajando en ello.<br>Muy pronto podrás acceder a tu cuenta y disfrutar de toda la experiencia
+        Heartenic.</p>
+      <a class="back-btn" href="index.html">← Volver al inicio</a>
     </div>
   </div>
 </body>

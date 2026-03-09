@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <title>Heartenic - Cultiva tu mundo interno</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
+  <meta name="description" content="Heartenic — Pocket Meditator. Tecnología consciente para el bienestar humano.">
   <link rel="stylesheet" href="css/index-new.css">
   <link rel="shortcut icon" href="images/logoHeartenic.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
   <div class="mesh-gradient-bg"></div>
-  
+
   <div class="barra-superior">
     <a href="index.html">
       <img class="logo" src="images/logoHeartenic.png" alt="Logo Heartenic">
@@ -22,15 +25,19 @@
   </div>
 
   <div class="landing">
-    <div class="breathing-mode">
-      <div class="breathing-circle">
-        <div class="breath-text">Inhala...</div>
-      </div>
-    </div>
+    <canvas id="heroCanvas"></canvas>
 
     <div class="hero-container">
-      <h1 class="hero-title">Cultiva tu mundo interno</h1>
-      <p class="hero-subtitle">Un futuro más humano empieza contigo</p>
+      <div class="hero-badge">✦ Pocket Meditator ✦</div>
+      <h1 class="hero-title">
+        <span class="glitch-layer" data-text="Cultiva tu">Cultiva tu</span><br>
+        mundo interno
+      </h1>
+      <p class="hero-subtitle">Un futuro más humano empieza contigo.<br>Tecnología consciente para el bienestar.</p>
+      <div class="hero-cta-group">
+        <a class="hero-btn-primary" href="#conoce-mas">Descubrir más</a>
+        <a class="hero-btn-secondary" href="meditador.html">El Meditador →</a>
+      </div>
     </div>
 
     <div class="socials-grid">
@@ -55,7 +62,7 @@
 
   <div class="grid-grid">
     <div class="grid-container">
-      <a class="content-container" href="about.html">
+      <a class="content-container reveal-on-scroll" href="about.html">
         <h3>Conócenos Mejor</h3>
         <div class="linea-horizontal"></div>
         <p class="texto-contenido">Atrévete a descubrir quiénes somos y lo que nos impulsa a crear.</p>
@@ -65,7 +72,7 @@
         <p style="text-align: center;">Leer más ></p>
       </a>
 
-      <a class="content-container" href="meditador.html">
+      <a class="content-container reveal-on-scroll" href="meditador.html">
         <h3>El Meditador de Bolsillo</h3>
         <div class="linea-horizontal"></div>
         <p class="texto-contenido">Tu pausa, en cualquier lugar.</p>
@@ -76,7 +83,7 @@
         <p style="text-align: center;">Leer más ></p>
       </a>
 
-      <a class="content-container" href="herramientas.html">
+      <a class="content-container reveal-on-scroll" href="herramientas.html">
         <h3>Herramientas para Desarrolladores</h3>
         <div class="linea-horizontal"></div>
         <p class="texto-contenido">Explora los recursos que te ayudan a crear desde el corazón.</p>
@@ -89,26 +96,27 @@
   </div>
 
   <section class="tech-stack-section">
+    <canvas id="techCanvas"></canvas>
     <div class="tech-stack-container">
       <h2 class="tech-stack-title">Tecnología de Vanguardia</h2>
       <p class="tech-stack-subtitle">
         El Meditador de Bolsillo combina hardware premium con inteligencia de datos avanzada
       </p>
-      
+
       <div class="tech-grid">
-        <div class="tech-card">
+        <div class="tech-card reveal-on-scroll">
           <div class="tech-icon">🧠</div>
           <h4>Inteligencia de Datos</h4>
           <p>Análisis en tiempo real de patrones biométricos para personalizar tu experiencia de meditación</p>
         </div>
-        
-        <div class="tech-card">
+
+        <div class="tech-card reveal-on-scroll">
           <div class="tech-icon">🔒</div>
           <h4>Ciberseguridad</h4>
           <p>Encriptación de nivel empresarial para proteger tu información más sensible</p>
         </div>
-        
-        <div class="tech-card">
+
+        <div class="tech-card reveal-on-scroll">
           <div class="tech-icon">⚡</div>
           <h4>Procesamiento Edge</h4>
           <p>Toda la computación ocurre en el dispositivo, sin necesidad de conexión constante</p>
@@ -119,7 +127,7 @@
 
   <section class="roadmap-section">
     <h2 class="roadmap-title">Nuestro Camino</h2>
-    
+
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-dot"></div>
@@ -129,7 +137,7 @@
           <p>Desarrollo del primer prototipo funcional del Meditador de Bolsillo con sensores biométricos básicos</p>
         </div>
       </div>
-      
+
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
@@ -138,7 +146,7 @@
           <p>Programa piloto con 100 usuarios para refinar la experiencia y algoritmos de meditación</p>
         </div>
       </div>
-      
+
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
@@ -147,7 +155,7 @@
           <p>Apertura de la plataforma web con herramientas para desarrolladores y API pública</p>
         </div>
       </div>
-      
+
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
@@ -176,25 +184,23 @@
     </p>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
   <script src="scripts/animations.js"></script>
+  <script src="scripts/hero-canvas.js"></script>
+  <script src="scripts/tech-webgl.js"></script>
   <script>
-    // Smooth scroll al hacer clic en la flecha
     const scrollBtn = document.getElementById('scroll-arrow-btn');
     if (scrollBtn) {
       const scrollToNext = () => {
         const target = document.getElementById('conoce-mas');
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       };
       scrollBtn.addEventListener('click', scrollToNext);
       scrollBtn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          scrollToNext();
-        }
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollToNext(); }
       });
     }
   </script>
 </body>
+
 </html>
